@@ -2143,79 +2143,6 @@
       "settings": {
         "swiper_settings": {
           "label": "Swiper ayarları"
-        },
-        "layout": {
-          "label": "Düzen",
-          "options__1": {
-            "label": "Tam genişlik"
-          },
-          "options__2": {
-            "label": "Sayfa"
-          }
-        },
-        "slide_height": {
-          "label": "Yükseklik",
-          "options__1": {
-            "label": "İlk görsele uyarla"
-          },
-          "options__2": {
-            "label": "Küçük"
-          },
-          "options__3": {
-            "label": "Orta"
-          },
-          "options__4": {
-            "label": "Büyük"
-          }
-        },
-        "slider_visual": {
-          "label": "Sayfalama",
-          "options__1": {
-            "label": "Noktalar"
-          },
-          "options__2": {
-            "label": "Sayaç"
-          },
-          "options__3": {
-            "label": "Sayılar"
-          }
-        },
-        "auto_rotate": {
-          "label": "Slaytları otomatik döndür"
-        },
-        "change_slides_speed": {
-          "label": "Slayt değişim süresi"
-        },
-        "media_aspect_ratio": {
-          "label": "Medya en-boy oranı",
-          "options__1": {
-            "label": "Varsayılan"
-          },
-          "options__2": {
-            "label": "16:9"
-          },
-          "options__3": {
-            "label": "1:1"
-          },
-          "options__4": {
-            "label": "3:4"
-          }
-        },
-        "lazy_load": {
-          "label": "Medyayı tembel yükle"
-        },
-        "mobile": {
-          "content": "Mobil düzen"
-        },
-        "show_text_below": {
-          "label": "Metni görselin altında göster"
-        },
-        "accessibility": {
-          "content": "Erişilebilirlik"
-        },
-        "accessibility_info": {
-          "label": "Slayt gösterisi açıklaması",
-          "default": "Markamız hakkında slayt gösterisi"
         }
       },
       "blocks": {
@@ -2239,12 +2166,6 @@
             "media": {
               "label": "Medya (metaobject)"
             },
-            "image": {
-              "label": "Yedek görsel"
-            },
-            "image_overlay_opacity": {
-              "label": "Kaplama opaklığı"
-            },
             "header_layout": {
               "content": "Düzen"
             },
@@ -2256,43 +2177,6 @@
             },
             "buttons": {
               "label": "Düğmeler (metaobject listesi)"
-            },
-            "button_label": {
-              "label": "Etiket",
-              "default": "KEŞFET"
-            },
-            "button_link": {
-              "label": "Bağlantı"
-            },
-            "header_style": {
-              "content": "Stil"
-            },
-            "show_text_box": {
-              "label": "Metin kutusu göster"
-            },
-            "box_align": {
-              "label": "İçerik konumu",
-              "options__1": { "label": "Üst sol" },
-              "options__2": { "label": "Üst orta" },
-              "options__3": { "label": "Üst sağ" },
-              "options__4": { "label": "Orta sol" },
-              "options__5": { "label": "Orta orta" },
-              "options__6": { "label": "Orta sağ" },
-              "options__7": { "label": "Alt sol" },
-              "options__8": { "label": "Alt orta" },
-              "options__9": { "label": "Alt sağ" }
-            },
-            "text_alignment": {
-              "label": "İçerik hizalaması",
-              "options__1": { "label": "Sol" },
-              "options__2": { "label": "Orta" },
-              "options__3": { "label": "Sağ" }
-            },
-            "text_alignment_mobile": {
-              "label": "Mobil içerik hizalaması",
-              "options__1": { "label": "Sol" },
-              "options__2": { "label": "Orta" },
-              "options__3": { "label": "Sağ" }
             }
           }
         }
