@@ -1,5 +1,31 @@
 {
   "sections": {
+    "main_swiper": {
+      "type": "main-swiper",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "title": "Rahatlıkla Büyüyen Mutlu Adımlar.",
+            "description": "Her yolculukta, hem sizin hem bebeğinizin mutluluğu için tasarlandı.",
+            "button_label": "KEŞFET",
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "show_text_box": true
+          }
+        }
+      },
+      "block_order": ["slide_1"],
+      "settings": {
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_text_below": true,
+        "accessibility_info": "Ana sayfa slayt gösterisi"
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -200,6 +226,7 @@
     }
   },
   "order": [
+    "main_swiper",
     "image_banner",
     "rich_text",
     "featured_collection",

@@ -1,0 +1,66 @@
+{% comment %}
+  Renders button from button metaobject
+  Accepts:
+  - data: Button metaobject (title, subtitle, link, target, class_name, variant, icon, icon_position, badge, badge_position, rel)
+  - settings: Optional hash (wrapper_class, extra_class)
+
+  Usage:
+  {% render 'button', data: button_metaobject, settings: button_settings %}
+{% endcomment %}
+
+{%- if data != blank -%}
+  {%- liquid
+  assign title = data.title.value | default: data.title | default: ''
+  assign subtitle = data.subtitle.value | default: data.subtitle | default: ''
+  assign link_url = data.link.value | default: data.link
+  assign target = data.target.value | default: data.target | default: '_self'
+  assign class_name = data.class_name.value | default: data.class_name | default: ''
+  assign variant = data.variant.value | default: data.variant | default: 'primary'
+  assign icon = data.icon.value | default: data.icon | default: ''
+  assign icon_position = data.icon_position.value | default: data.icon_position | default: 'right'
+  assign badge = data.badge.value | default: data.badge | default: ''
+  assign badge_position = data.badge_position.value | default: data.badge_position | default: 'top'
+  assign rel_attr = data.rel.value | default: data.rel | default: ''
+
+  assign wrapper_class = settings.wrapper_class | default: ''
+  assign extra_class = settings.extra_class | default: ''
+
+  assign button_class = 'button'
+  if variant == 'secondary'
+    assign button_class = button_class | append: ' button--secondary'
+  else
+    assign button_class = button_class | append: ' button--primary'
+  endif
+  assign button_class = button_class | append: ' ' | append: class_name | append: ' ' | append: extra_class
+-%}
+
+  <div class="button-wrapper {{ wrapper_class }}{% if badge != blank %} button--has-badge button--badge-{{ badge_position }}{% endif %}">
+  {%- if badge != blank -%}
+    <span class="button__badge">{{ badge }}</span>
+  {%- endif -%}
+  <a
+    href="{{ link_url | default: '#' }}"
+    class="{{ button_class }}"
+    {% if link_url == blank %}role="link" aria-disabled="true"{% endif %}
+    target="{{ target }}"
+    {% if rel_attr != blank %}rel="{{ rel_attr }}"{% endif %}
+  >
+    {%- if icon != blank and icon_position == 'left' -%}
+      <span class="button__icon button__icon--left">
+        {%- render 'icon-accordion', icon: icon -%}
+      </span>
+    {%- endif -%}
+    <span class="button__text">
+      {%- if subtitle != blank -%}
+        <span class="button__subtitle">{{ subtitle }}</span>
+      {%- endif -%}
+      <span class="button__title">{{ title }}</span>
+    </span>
+    {%- if icon != blank and icon_position == 'right' -%}
+      <span class="button__icon button__icon--right">
+        {%- render 'icon-accordion', icon: icon -%}
+      </span>
+    {%- endif -%}
+  </a>
+  </div>
+{%- endif -%}

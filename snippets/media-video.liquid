@@ -1,0 +1,41 @@
+{% comment %}
+  Renders video element from media metaobject
+  Accepts:
+  - data: Media metaobject (desktop_video, mobile_video, desktop_video_poster, mobile_video_poster, title, class_name)
+  - settings: Optional hash with aspect_ratio, lazy, media_class, wrapper_class, autoplay, loop, muted
+
+  Usage:
+  {% render 'media-video', data: media_metaobject, settings: media_settings %}
+{% endcomment %}
+
+{%- liquid
+  assign media_class = settings.media_class | default: 'w-full h-full object-cover'
+  assign wrapper_class = settings.wrapper_class | default: ''
+  assign aspect_ratio = settings.aspect_ratio | default: ''
+  assign autoplay = settings.autoplay | default: true
+  assign loop_video = settings.loop | default: true
+  assign muted_video = settings.muted | default: true
+  assign title = data.title.value | default: data.title | default: ''
+  assign class_name = data.class_name.value | default: data.class_name | default: ''
+
+  assign desktop_video = data.desktop_video.value | default: data.desktop_video
+  assign mobile_video = data.mobile_video.value | default: data.mobile_video
+  assign desktop_poster = data.desktop_video_poster.value | default: data.desktop_video_poster
+  assign mobile_poster = data.mobile_video_poster.value | default: data.mobile_video_poster
+-%}
+
+{%- if desktop_video != blank or mobile_video != blank -%}
+  <div class="video prm-media {{ wrapper_class }} {{ class_name }}{% if aspect_ratio != blank %} {{ aspect_ratio }}{% endif %}">
+    {%- assign video_media = desktop_video | default: mobile_video -%}
+    {%- if mobile_video != blank and desktop_video != blank -%}
+      <div class="video--desktop small-hide">
+        {{ desktop_video | media_tag: image_size: '2048x', autoplay: autoplay, loop: loop_video, controls: false, muted: muted_video, class: media_class }}
+      </div>
+      <div class="video--mobile large-up-hide">
+        {{ mobile_video | media_tag: image_size: '750x', autoplay: autoplay, loop: loop_video, controls: false, muted: muted_video, class: media_class }}
+      </div>
+    {%- else -%}
+      {{ video_media | media_tag: image_size: '2048x', autoplay: autoplay, loop: loop_video, controls: false, muted: muted_video, class: media_class }}
+    {%- endif -%}
+  </div>
+{%- endif -%}

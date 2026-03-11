@@ -1,0 +1,176 @@
+/* Main Swiper Section - Swiper.js */
+.main-swiper-wrapper {
+  position: relative;
+}
+
+.main-swiper.swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.main-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.main-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+}
+
+/* Banner height variants */
+.main-swiper.banner--small {
+  min-height: 28rem;
+}
+
+.main-swiper.banner--medium {
+  min-height: 35rem;
+}
+
+.main-swiper.banner--large {
+  min-height: 42rem;
+}
+
+.main-swiper__slide {
+  position: relative;
+  width: 100%;
+}
+
+.main-swiper__slide .slideshow__media {
+  position: absolute;
+  inset: 0;
+}
+
+.main-swiper__slide .slideshow__media img,
+.main-swiper__slide .slideshow__media .picture,
+.main-swiper__slide .slideshow__media .video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main-swiper__slide .slideshow__text-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.main-swiper__slide .slideshow__text-wrapper > * {
+  pointer-events: auto;
+}
+
+/* Layout variants */
+.main-swiper__slide.layout--top-left .slideshow__text-wrapper { align-items: flex-start; justify-content: flex-start; }
+.main-swiper__slide.layout--top-center .slideshow__text-wrapper { align-items: flex-start; justify-content: center; }
+.main-swiper__slide.layout--top-right .slideshow__text-wrapper { align-items: flex-start; justify-content: flex-end; }
+.main-swiper__slide.layout--center-left .slideshow__text-wrapper { align-items: center; justify-content: flex-start; }
+.main-swiper__slide.layout--center-center .slideshow__text-wrapper { align-items: center; justify-content: center; }
+.main-swiper__slide.layout--center-right .slideshow__text-wrapper { align-items: center; justify-content: flex-end; }
+.main-swiper__slide.layout--bottom-left .slideshow__text-wrapper { align-items: flex-end; justify-content: flex-start; }
+.main-swiper__slide.layout--bottom-center .slideshow__text-wrapper { align-items: flex-end; justify-content: center; }
+.main-swiper__slide.layout--bottom-right .slideshow__text-wrapper { align-items: flex-end; justify-content: flex-end; }
+
+/* Slideshow text & content - from component-slideshow */
+.main-swiper__slide .slideshow__text-wrapper {
+  height: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .main-swiper__slide .slideshow__text-wrapper.banner__content {
+    height: 100%;
+    padding: 5rem;
+  }
+}
+
+.main-swiper__slide .slideshow__text.banner__box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 54.5rem;
+}
+
+.main-swiper__slide .slideshow__text > * {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .main-swiper__slide .slideshow__text.slideshow__text-mobile--left {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .main-swiper__slide .slideshow__text.slideshow__text-mobile--right {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .main-swiper__slide .slideshow__text.slideshow__text--left {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .main-swiper__slide .slideshow__text.slideshow__text--right {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+/* Swiper navigation buttons - use theme icons */
+.main-swiper .swiper-button-prev,
+.main-swiper .swiper-button-next {
+  color: rgb(var(--color-foreground));
+  width: 4.4rem;
+  height: 4.4rem;
+  margin-top: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.main-swiper .swiper-button-prev::after,
+.main-swiper .swiper-button-next::after {
+  display: none;
+}
+
+.main-swiper .swiper-button-prev .svg-wrapper,
+.main-swiper .swiper-button-next .svg-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-swiper .swiper-button-next .svg-wrapper {
+  transform: rotate(180deg);
+}
+
+/* Button badge */
+.button--has-badge {
+  position: relative;
+}
+
+.button__badge {
+  position: absolute;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  background: var(--color-foreground);
+  color: var(--color-background);
+  border-radius: 0.25rem;
+  white-space: nowrap;
+}
+
+.button--badge-top .button__badge {
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.button--badge-bottom .button__badge {
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}

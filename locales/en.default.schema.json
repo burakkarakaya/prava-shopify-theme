@@ -2466,6 +2466,169 @@
         }
       }
     },
+    "main_swiper": {
+      "name": "Main Swiper",
+      "settings": {
+        "swiper_settings": {
+          "label": "Swiper settings"
+        },
+        "layout": {
+          "label": "Layout",
+          "options__1": {
+            "label": "Full width"
+          },
+          "options__2": {
+            "label": "Page"
+          }
+        },
+        "slide_height": {
+          "label": "Height",
+          "options__1": {
+            "label": "Adapt to first image"
+          },
+          "options__2": {
+            "label": "Small"
+          },
+          "options__3": {
+            "label": "Medium"
+          },
+          "options__4": {
+            "label": "Large"
+          }
+        },
+        "slider_visual": {
+          "label": "Pagination",
+          "options__1": {
+            "label": "Dots"
+          },
+          "options__2": {
+            "label": "Counter"
+          },
+          "options__3": {
+            "label": "Numbers"
+          }
+        },
+        "auto_rotate": {
+          "label": "Auto rotate slides"
+        },
+        "change_slides_speed": {
+          "label": "Change slides every"
+        },
+        "media_aspect_ratio": {
+          "label": "Media aspect ratio",
+          "options__1": {
+            "label": "Default"
+          },
+          "options__2": {
+            "label": "16:9"
+          },
+          "options__3": {
+            "label": "1:1"
+          },
+          "options__4": {
+            "label": "3:4"
+          }
+        },
+        "lazy_load": {
+          "label": "Lazy load media"
+        },
+        "mobile": {
+          "content": "Mobile layout"
+        },
+        "show_text_below": {
+          "label": "Stack text below image"
+        },
+        "accessibility": {
+          "content": "Accessibility"
+        },
+        "accessibility_info": {
+          "label": "Slideshow description",
+          "default": "Slideshow about our brand"
+        }
+      },
+      "blocks": {
+        "slide": {
+          "name": "Slide",
+          "settings": {
+            "header_heading": {
+              "content": "Heading"
+            },
+            "title": {
+              "label": "Heading",
+              "default": "Image slide"
+            },
+            "description": {
+              "label": "Subheading",
+              "default": "Tell your brand's story through images"
+            },
+            "header_media": {
+              "content": "Media"
+            },
+            "media": {
+              "label": "Media (metaobject)"
+            },
+            "image": {
+              "label": "Fallback image"
+            },
+            "image_overlay_opacity": {
+              "label": "Overlay opacity"
+            },
+            "header_layout": {
+              "content": "Layout"
+            },
+            "layout": {
+              "label": "Layout (metaobject)"
+            },
+            "header_button": {
+              "content": "Button"
+            },
+            "buttons": {
+              "label": "Buttons (metaobject list)"
+            },
+            "button_label": {
+              "label": "Label",
+              "default": "Button label"
+            },
+            "button_link": {
+              "label": "Link"
+            },
+            "header_style": {
+              "content": "Style"
+            },
+            "show_text_box": {
+              "label": "Show text box"
+            },
+            "box_align": {
+              "label": "Content position",
+              "options__1": { "label": "Top left" },
+              "options__2": { "label": "Top center" },
+              "options__3": { "label": "Top right" },
+              "options__4": { "label": "Middle left" },
+              "options__5": { "label": "Middle center" },
+              "options__6": { "label": "Middle right" },
+              "options__7": { "label": "Bottom left" },
+              "options__8": { "label": "Bottom center" },
+              "options__9": { "label": "Bottom right" }
+            },
+            "text_alignment": {
+              "label": "Content alignment",
+              "options__1": { "label": "Left" },
+              "options__2": { "label": "Center" },
+              "options__3": { "label": "Right" }
+            },
+            "text_alignment_mobile": {
+              "label": "Mobile content alignment",
+              "options__1": { "label": "Left" },
+              "options__2": { "label": "Center" },
+              "options__3": { "label": "Right" }
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Main Swiper"
+      }
+    },
     "multicolumn": {
       "name": "Multicolumn",
       "settings": {
