@@ -1,0 +1,26 @@
+{% comment %}
+  Renders media based on type - delegates to media-picture, media-video, or media-iframe
+  Accepts:
+  - data: Media metaobject
+  - settings: Optional hash (aspect_ratio, lazy, media_class, wrapper_class, autoplay, loop, muted)
+
+  Usage:
+  {% render 'media', data: block.settings.media, settings: media_settings %}
+{% endcomment %}
+
+{%- if data != blank -%}
+  {%- liquid
+    assign media_type = data.media_type.value | default: data.type.value | default: data.media_type | default: data.type | default: 'image'
+  -%}
+
+  {%- case media_type -%}
+  {%- when 'image' -%}
+    {%- render 'media-picture', data: data, settings: settings -%}
+  {%- when 'video' -%}
+    {%- render 'media-video', data: data, settings: settings -%}
+  {%- when 'iframe', 'embed' -%}
+    {%- render 'media-iframe', data: data, settings: settings -%}
+  {%- else -%}
+    {%- render 'media-picture', data: data, settings: settings -%}
+  {%- endcase -%}
+{%- endif -%}

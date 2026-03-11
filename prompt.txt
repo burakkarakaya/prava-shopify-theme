@@ -1,0 +1,265 @@
+Button Metaobject
+
+{
+  "type": "button",
+  "fields": {
+    "title": "Koleksiyonu Keşfet",
+    "subtitle": "Yeni Sezon",
+    "link": "https://burak-dev-store.myshopify.com/collections/spring-2026",
+    "target": "_self",
+    "class_name": "hero-cta-primary",
+    "variant": "primary",
+    "icon": "arrow-right",
+    "icon_position": "right",
+    "badge": "new",
+    "badge_position": "top",
+    "rel": "nofollow"
+  }
+}
+
+
+Media Metaobject
+{
+  "type": "media",
+  "fields": {
+    "title": "Hero Banner Görseli",
+    "class_name": "hero-media-fullwidth",
+    "type": "image",
+    "desktop_image": "gid://shopify/MediaImage/123456789",
+    "mobile_image": "gid://shopify/MediaImage/987654321",
+    "mobile_retina": "gid://shopify/MediaImage/456789123",
+    "app_image": "gid://shopify/MediaImage/321654987",
+    "desktop_video": null,
+    "desktop_video_poster": null,
+    "mobile_video": null,
+    "mobile_video_poster": null,
+    "iframe_url": null
+  }
+}
+{
+  "type": "media",
+  "fields": {
+    "title": "Hero Video",
+    "class_name": "hero-video-bg",
+    "type": "video",
+    "desktop_image": null,
+    "mobile_image": null,
+    "mobile_retina": null,
+    "app_image": null,
+    "desktop_video": "gid://shopify/MediaImage/111222333",
+    "desktop_video_poster": "gid://shopify/MediaImage/444555666",
+    "mobile_video": "gid://shopify/MediaImage/777888999",
+    "mobile_video_poster": "gid://shopify/MediaImage/000111222",
+    "iframe_url": null
+  }
+}
+
+
+Layout Metaobject
+
+{
+  "type": "layout",
+  "fields": {
+    "theme": "dark",
+    "class_name": "hero-layout-centered",
+    "vertical_position": "center",
+    "horizontal_position": "center"
+  }
+}
+
+{
+  "type": "layout",
+  "fields": {
+    "theme": "light",
+    "class_name": "banner-layout-left-bottom",
+    "vertical_position": "bottom",
+    "horizontal_position": "left"
+  }
+}
+
+
+Swiper Settings metaobject
+
+{
+  "type": "swiper_settings",
+  "fields": {
+    "class_name": "hero-swiper-custom",
+    "navigation": true,
+    "pagination": true
+  }
+}
+
+
+
+index.json dosyasına main_swiper section ekle. 
+
+{
+
+    swiper_settings,
+    blocks: [
+        {
+
+            heading: {
+
+                title,
+                description
+            },
+
+
+            media,
+            layout,
+            buttons: [button]
+        }
+    ]
+
+}
+
+ayrıca default değerlerde verebilirsin. index.json içerisinden örneğin; resim olmasada örneğin; heading içerisine title, descrption ve butona discover gibi yazdırabilirsin. 
+
+
+
+html olarak swiper için html oluşsun.
+
+yani bir tane block içindeki item içerisi
+
+
+title:Rahatlıkla Büyüyen Mutlu Adımlar.
+desc: Her yolculukta, hem sizin hem bebeğinizin mutluluğu için tasarlandı.
+button: KEŞFET
+
+<picture /> veya <video>
+
+örneğin snippet ile media, button oluştur ve onları ortak olarak kullanıyım sadece dışardan ek parametrede alabilsin örneğin;
+
+media oluşturduk zaten bir veri geliyor kullanıcının girdiği ayrıca settings gibi bir parametrede orneğin tasarıma uygun aspect-ratio class gonderebiliyim veya lazy olsun olmasın true false gonderebiliyim.
+
+
+örneğin;
+
+media ile benzer data ile reactda yapmıştım bunun snippet karşılığı. örneğin; picture, video, iframe gibi tek başına kullanabileceğim kucuk snippitlara bolebilirsin. yani Media diye bir snippet gonderip sonra onun içerisinden tipe gore Picture, Video, iframe gibi farklı snippetlrada gonderebilirsin.
+
+import { IImage, IImageOptions } from "@/interfaces";
+
+import { cn } from "@/helpers";
+
+import { processImageUrl, isGifUrl } from "@/helpers";
+import { cdn } from "nextemos";
+// config
+import appConfig from "@/app-config";
+import { useInView } from "react-intersection-observer";
+
+interface IProps {
+  data: IImage;
+  options?: IImageOptions;
+}
+
+const Picture: React.FC<IProps> = ({ data, options = {} }) => {
+  const { ref, inView } = useInView({
+    rootMargin: "200px",
+    triggerOnce: true,
+  });
+
+  const {
+    isLazy = true,
+    WrapperClass = "",
+    MediaClass = "w-full h-full object-cover",
+    Title: optionsTitle = "",
+    ImageSize,
+    LazyImage,
+  } = options;
+
+  const cdnPath = cdn.getFile("/");
+  const lazyClass = isLazy ? "lazy" : "eager";
+  const title = data.Title || optionsTitle || "";
+  const className = data.ClassName || "";
+
+  let desktopImage =
+    data.DesktopImage && processImageUrl(data.DesktopImage, cdnPath);
+  let mobileImage =
+    data.MobileImage && processImageUrl(data.MobileImage, cdnPath);
+  let mobileRetina =
+    data.MobileRetina && processImageUrl(data.MobileRetina, cdnPath);
+
+  if (ImageSize) {
+    if (ImageSize.desktop && desktopImage && !isGifUrl(desktopImage)) {
+      desktopImage =
+        data.DesktopImage &&
+        cdn.thumbImage({
+          path: data.DesktopImage.trim(),
+          ...(typeof ImageSize.desktop === "number"
+            ? { width: ImageSize.desktop }
+            : {
+                width: ImageSize.desktop.width || 0,
+                height: ImageSize.desktop.height,
+              }),
+        });
+    }
+    if (ImageSize.mobile && mobileImage && !isGifUrl(mobileImage)) {
+      mobileImage =
+        data.MobileImage &&
+        cdn.thumbImage({
+          path: data.MobileImage.trim(),
+          ...(typeof ImageSize.mobile === "number"
+            ? { width: ImageSize.mobile }
+            : {
+                width: ImageSize.mobile.width || 0,
+                height: ImageSize.mobile.height,
+              }),
+        });
+    }
+    if (ImageSize.mobile2x && mobileRetina && !isGifUrl(mobileRetina)) {
+      mobileRetina =
+        data.MobileRetina &&
+        cdn.thumbImage({
+          path: data.MobileRetina.trim(),
+          ...(typeof ImageSize.mobile2x === "number"
+            ? { width: ImageSize.mobile2x }
+            : {
+                width: ImageSize.mobile2x.width || 0,
+                height: ImageSize.mobile2x.height,
+              }),
+        });
+    }
+  }
+  const loadingImg = LazyImage
+    ? LazyImage
+    : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAGCAQAAACh8pzAAAAAEElEQVR42mN8V88ABYzkMQE/CwiVDB4roAAAAABJRU5ErkJggg==";
+
+  return (
+    <div
+      ref={ref}
+      className={cn("picture prm-media", lazyClass, WrapperClass, className)}
+    >
+      <picture>
+        {isLazy && (
+          <source
+            media={inView ? "(max-width:0px)" : "(max-width:9999px)"}
+            srcSet={loadingImg}
+            className="flex items-center justify-center"
+          />
+        )}
+        {desktopImage &&
+          desktopImage !== "" &&
+          mobileImage &&
+          mobileImage !== "" && (
+            <>
+              <source
+                media={`(max-width: ${appConfig.MAX_MATCHES})`}
+                srcSet={`${mobileImage} 1x, ${mobileRetina} 2x`}
+              />
+              <source
+                media={`(min-width: ${appConfig.MIN_MATCHES})`}
+                srcSet={desktopImage}
+              />
+            </>
+          )}
+        <img className={MediaClass} alt={title} src={desktopImage} />
+      </picture>
+    </div>
+  );
+};
+
+export default Picture;
+
+
+

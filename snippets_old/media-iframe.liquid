@@ -1,0 +1,33 @@
+{% comment %}
+  Renders iframe embed from media metaobject
+  Accepts:
+  - data: Media metaobject (iframe_url, title, class_name)
+  - settings: Optional hash with aspect_ratio, wrapper_class
+
+  Usage:
+  {% render 'media-iframe', data: media_metaobject, settings: media_settings %}
+{% endcomment %}
+
+{%- liquid
+  assign wrapper_class = settings.wrapper_class | default: ''
+  assign aspect_ratio = settings.aspect_ratio | default: 'aspect-video'
+  assign title = data.title.value | default: data.title | default: ''
+  assign class_name = data.class_name.value | default: data.class_name | default: ''
+
+  assign iframe_url = data.iframe_url.value | default: data.iframe_url
+-%}
+
+{%- if iframe_url != blank -%}
+  <div class="iframe prm-media {{ wrapper_class }} {{ class_name }} {{ aspect_ratio }}">
+    <div class="media--embed">
+      <iframe
+        src="{{ iframe_url }}"
+        title="{{ title | escape }}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+{%- endif -%}
