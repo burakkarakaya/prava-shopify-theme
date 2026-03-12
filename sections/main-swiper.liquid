@@ -1,6 +1,6 @@
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 {{ 'section-main-swiper.css' | asset_url | stylesheet_tag }}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 <script src="{{ 'section-main-swiper.js' | asset_url }}" defer></script>
 
@@ -21,6 +21,15 @@
   endif
 -%}
 
+{%- comment -%} Section ayarlarını göster {%- endcomment -%}
+<pre style="background:#f5f5f5; padding:1rem; overflow:auto;">{{ section.settings | json }}</pre>
+{%- comment -%} Swiper settings metaobject {%- endcomment -%}
+<pre>{{ section.settings.swiper_settings | json }}</pre>
+{%- comment -%} Her block'un verisini göster {%- endcomment -%}
+{% for block in section.blocks %}
+  <pre>Block {{ forloop.index }}: {{ block.settings | json }}</pre>
+{% endfor %}
+
 <main-swiper-section
   class="main-swiper-wrapper"
   role="region"
@@ -36,69 +45,72 @@
     data-pagination="{{ show_pagination }}"
   >
     <div class="swiper-wrapper">
-    {%- for block in section.blocks -%}
-      {%- liquid
-        assign layout = block.settings.layout
-        assign theme = 'light'
-        assign vertical_pos = 'center'
-        assign horizontal_pos = 'center'
-        assign layout_class = ''
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign layout = block.settings.layout
+          assign theme = 'light'
+          assign vertical_pos = 'center'
+          assign horizontal_pos = 'center'
+          assign layout_class = ''
 
-        if layout != blank
-          assign theme = layout.theme.value | default: layout.theme | default: 'light'
-          assign vertical_pos = layout.vertical_position.value | default: layout.vertical_position | default: 'center'
-          assign horizontal_pos = layout.horizontal_position.value | default: layout.horizontal_position | default: 'center'
-          assign layout_class = layout.class_name.value | default: layout.class_name | default: ''
-        endif
+          if layout != blank
+            assign theme = layout.theme.value | default: layout.theme | default: 'light'
+            assign vertical_pos = layout.vertical_position.value | default: layout.vertical_position | default: 'center'
+            assign horizontal_pos = layout.horizontal_position.value | default: layout.horizontal_position | default: 'center'
+            assign layout_class = layout.class_name.value | default: layout.class_name | default: ''
+          endif
 
-        assign title = block.settings.title
-        assign description = block.settings.description
-        assign media_obj = block.settings.media
-        assign buttons_list = block.settings.buttons
-      -%}
+          assign title = block.settings.title
+          assign description = block.settings.description
+          assign media_obj = block.settings.media
+          assign buttons_list = block.settings.buttons
+        -%}
 
-      <div
-        class="swiper-slide main-swiper__slide layout--{{ theme }} layout--{{ vertical_pos }}-{{ horizontal_pos }} {{ layout_class }} w-full min-h-screen h-screen"
-        id="slide-{{ section.id }}-{{ forloop.index }}"
-        {{ block.shopify_attributes }}
-        role="group"
-        aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ section.blocks.size }}"
-      >
-        <div class="slideshow__media banner__media media absolute inset-0 w-full h-full{% if media_obj == blank %} placeholder{% endif %}">
-          {%- if media_obj != blank -%}
-            {%- render 'media', data: media_obj, settings: section.settings -%}
-          {%- else -%}
-            {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        <div
+          class="swiper-slide main-swiper__slide layout--{{ theme }} layout--{{ vertical_pos }}-{{ horizontal_pos }} {{ layout_class }} w-full min-h-screen h-screen"
+          id="slide-{{ section.id }}-{{ forloop.index }}"
+          {{ block.shopify_attributes }}
+          role="group"
+          aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ section.blocks.size }}"
+        >
+          <div class="slideshow__media banner__media media absolute inset-0 w-full h-full{% if media_obj == blank %} placeholder{% endif %}">
+            {%- if media_obj != blank -%}
+              {%- render 'media', data: media_obj, settings: section.settings -%}
+            {%- else -%}
+              {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10 pointer-events-none"
+            aria-hidden="true"
+          ></div>
+
+          {%- if title != blank or description != blank or buttons_list != blank -%}
+            <div class="slideshow__text-wrapper banner__content banner__content--middle-left absolute inset-0 flex items-center justify-start px-6 md:px-12 lg:px-20 z-20">
+              <div class="slideshow__text banner__box max-w-2xl text-left color-scheme-1">
+                {%- if title != blank -%}
+                  <h2 class="banner__heading inline-richtext text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    {{ title }}
+                  </h2>
+                {%- endif -%}
+                {%- if description != blank -%}
+                  <div class="banner__text rte text-white/90 mt-4 text-lg md:text-xl">
+                    <p>{{ description }}</p>
+                  </div>
+                {%- endif -%}
+                {%- if buttons_list != blank and buttons_list.size > 0 -%}
+                  <div class="banner__buttons mt-6 [&_.button]:!bg-transparent [&_.button]:!text-white [&_.button]:!border-white [&_.button]:border-b [&_.button]:rounded-none [&_.button]:px-0 [&_.button]:hover:!bg-white/10">
+                    {%- for btn in buttons_list -%}
+                      {%- render 'button', data: btn -%}
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
           {%- endif -%}
         </div>
-
-        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10 pointer-events-none" aria-hidden="true"></div>
-
-        {%- if title != blank or description != blank or buttons_list != blank -%}
-          <div class="slideshow__text-wrapper banner__content banner__content--middle-left absolute inset-0 flex items-center justify-start px-6 md:px-12 lg:px-20 z-20">
-            <div class="slideshow__text banner__box max-w-2xl text-left color-scheme-1">
-              {%- if title != blank -%}
-                <h2 class="banner__heading inline-richtext text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                  {{ title }}
-                </h2>
-              {%- endif -%}
-              {%- if description != blank -%}
-                <div class="banner__text rte text-white/90 mt-4 text-lg md:text-xl">
-                  <p>{{ description }}</p>
-                </div>
-              {%- endif -%}
-              {%- if buttons_list != blank and buttons_list.size > 0 -%}
-                <div class="banner__buttons mt-6 [&_.button]:!bg-transparent [&_.button]:!text-white [&_.button]:!border-white [&_.button]:border-b [&_.button]:rounded-none [&_.button]:px-0 [&_.button]:hover:!bg-white/10">
-                  {%- for btn in buttons_list -%}
-                    {%- render 'button', data: btn -%}
-                  {%- endfor -%}
-                </div>
-              {%- endif -%}
-            </div>
-          </div>
-        {%- endif -%}
-      </div>
-    {%- endfor -%}
+      {%- endfor -%}
     </div>
 
     {%- if show_navigation and section.blocks.size > 1 -%}
