@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings_schema": {
     "global": {
@@ -2464,6 +2473,28 @@
         "article_show_author": {
           "label": "Author"
         }
+      }
+    },
+    "featured-categories": {
+      "name": "Featured Categories",
+      "settings": {
+        "heading": {
+          "label": "Heading",
+          "default": "Categories"
+        }
+      },
+      "blocks": {
+        "category": {
+          "name": "Category",
+          "settings": {
+            "collection": {
+              "label": "Collection"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Featured Categories"
       }
     },
     "main_swiper": {

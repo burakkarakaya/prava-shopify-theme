@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main_swiper": {
@@ -6,26 +15,60 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "title": "Rahatlıkla Büyüyen Mutlu Adımlar.",
-            "description": "Her yolculukta, hem sizin hem bebeğinizin mutluluğu için tasarlandı.",
-            "button_label": "KEŞFET",
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "show_text_box": true
+            "title": "sdfdfsdf",
+            "description": "sdfsdfsdfs",
+            "media": "rahatlikla-buyuyen-mutlu-adimlar",
+            "layout": "layout-6wfh1i6k",
+            "buttons": [
+              "button-6w6b99tr",
+              "button-3fr3eg5s"
+            ]
+          }
+        },
+        "slide_EDQbPg": {
+          "type": "slide",
+          "settings": {
+            "title": "Image slide",
+            "description": "Tell your brand's story through images",
+            "media": "rahatlikla-buyuyen-mutlu-adimlar",
+            "layout": "",
+            "buttons": [
+              "button-6w6b99tr",
+              "button-3fr3eg5s"
+            ]
+          }
+        },
+        "slide_yHTeVE": {
+          "type": "slide",
+          "settings": {
+            "title": "Image slide",
+            "description": "Tell your brand's story through images",
+            "media": "",
+            "layout": "",
+            "buttons": []
           }
         }
       },
-      "block_order": ["slide_1"],
+      "block_order": [
+        "slide_1",
+        "slide_EDQbPg",
+        "slide_yHTeVE"
+      ],
       "settings": {
-        "slide_height": "medium",
-        "slider_visual": "counter",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "show_text_below": true,
-        "accessibility_info": "Ana sayfa slayt gösterisi"
+        "swiper_settings": ""
       }
+    },
+    "featured_categories": {
+      "type": "featured-categories",
+      "settings": {
+        "heading": "Kategoriler"
+      },
+      "blocks": {},
+      "block_order": []
     }
   },
-  "order": ["main_swiper"]
+  "order": [
+    "main_swiper",
+    "featured_categories"
+  ]
 }

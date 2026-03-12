@@ -1,0 +1,72 @@
+<div class="featured-categories">
+  {%- if section.settings.heading != blank -%}
+    <h2>{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  <div class="featured-categories__grid">
+    {%- for block in section.blocks -%}
+      {%- assign collection = block.settings.collection -%}
+      {%- if collection != blank -%}
+        <a
+          href="{{ collection.url }}"
+          class="featured-categories__item"
+          {{ block.shopify_attributes }}
+        >
+          {%- if collection.image != blank -%}
+            <img
+              src="{{ collection.image | image_url: width: 480 }}"
+              alt="{{ collection.title | escape }}"
+              width="480"
+              height="480"
+              loading="lazy"
+            >
+          {%- endif -%}
+          <span>{{ collection.title }}</span>
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.featured-categories.name",
+  "tag": "section",
+  "class": "section featured-categories-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.featured-categories.settings.heading.label",
+      "default": "t:sections.featured-categories.settings.heading.default"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "t:sections.featured-categories.blocks.category.name",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.featured-categories.blocks.category.settings.collection.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-categories.presets.name",
+      "blocks": [
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" }
+      ]
+    }
+  ]
+}
+{% endschema %}

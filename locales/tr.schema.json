@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings_schema": {
     "colors": {
@@ -2136,6 +2145,28 @@
             "label": "2"
           }
         }
+      }
+    },
+    "featured-categories": {
+      "name": "Öne Çıkan Kategoriler",
+      "settings": {
+        "heading": {
+          "label": "Başlık",
+          "default": "Kategoriler"
+        }
+      },
+      "blocks": {
+        "category": {
+          "name": "Kategori",
+          "settings": {
+            "collection": {
+              "label": "Koleksiyon"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Öne Çıkan Kategoriler"
       }
     },
     "main_swiper": {
