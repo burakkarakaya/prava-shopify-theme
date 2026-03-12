@@ -6,10 +6,10 @@
 
 {%- liquid
   assign swiper_settings = section.settings.swiper_settings
-  assign slide_height = 'medium'
+  assign slide_height = 'fullscreen'
   assign show_navigation = true
   assign show_pagination = true
-  assign swiper_class = 'main-swiper swiper'
+  assign swiper_class = 'main-swiper swiper w-full'
 
   if swiper_settings != blank
     assign meta_class = swiper_settings.class_name.value | default: swiper_settings.class_name
@@ -27,7 +27,7 @@
   aria-label="{{ 'sections.slideshow.settings.accessibility_info.default' | t }}"
 >
   <div
-    class="{{ swiper_class }} banner banner--{{ slide_height }}{% if section.blocks.size > 0 and section.blocks.first.settings.media == blank %} slideshow--placeholder{% endif %}"
+    class="{{ swiper_class }} banner banner--{{ slide_height }} min-h-screen h-screen{% if section.blocks.size > 0 and section.blocks.first.settings.media == blank %} slideshow--placeholder{% endif %}"
     id="main-swiper-{{ section.id }}"
     data-section-id="{{ section.id }}"
     data-autoplay="false"
@@ -58,13 +58,13 @@
       -%}
 
       <div
-        class="swiper-slide main-swiper__slide layout--{{ theme }} layout--{{ vertical_pos }}-{{ horizontal_pos }} {{ layout_class }}"
+        class="swiper-slide main-swiper__slide layout--{{ theme }} layout--{{ vertical_pos }}-{{ horizontal_pos }} {{ layout_class }} w-full min-h-screen h-screen"
         id="slide-{{ section.id }}-{{ forloop.index }}"
         {{ block.shopify_attributes }}
         role="group"
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ section.blocks.size }}"
       >
-        <div class="slideshow__media banner__media media{% if media_obj == blank %} placeholder{% endif %}">
+        <div class="slideshow__media banner__media media absolute inset-0 w-full h-full{% if media_obj == blank %} placeholder{% endif %}">
           {%- if media_obj != blank -%}
             {%- render 'media', data: media_obj, settings: section.settings -%}
           {%- else -%}
@@ -72,21 +72,23 @@
           {%- endif -%}
         </div>
 
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10 pointer-events-none" aria-hidden="true"></div>
+
         {%- if title != blank or description != blank or buttons_list != blank -%}
-          <div class="slideshow__text-wrapper banner__content banner__content--middle-center page-width">
-            <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-scheme-1 gradient slideshow__text--center slideshow__text-mobile--center">
+          <div class="slideshow__text-wrapper banner__content banner__content--middle-left absolute inset-0 flex items-center justify-start px-6 md:px-12 lg:px-20 z-20">
+            <div class="slideshow__text banner__box max-w-2xl text-left color-scheme-1">
               {%- if title != blank -%}
-                <h2 class="banner__heading inline-richtext h1">
+                <h2 class="banner__heading inline-richtext text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   {{ title }}
                 </h2>
               {%- endif -%}
               {%- if description != blank -%}
-                <div class="banner__text rte">
+                <div class="banner__text rte text-white/90 mt-4 text-lg md:text-xl">
                   <p>{{ description }}</p>
                 </div>
               {%- endif -%}
               {%- if buttons_list != blank and buttons_list.size > 0 -%}
-                <div class="banner__buttons">
+                <div class="banner__buttons mt-6 [&_.button]:!bg-transparent [&_.button]:!text-white [&_.button]:!border-white [&_.button]:border-b [&_.button]:rounded-none [&_.button]:px-0 [&_.button]:hover:!bg-white/10">
                   {%- for btn in buttons_list -%}
                     {%- render 'button', data: btn -%}
                   {%- endfor -%}
@@ -118,7 +120,7 @@
 {
   "name": "t:sections.main_swiper.name",
   "tag": "section",
-  "class": "section",
+  "class": "section main-banner-section",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
