@@ -37,22 +37,11 @@
               "button-3fr3eg5s"
             ]
           }
-        },
-        "slide_yHTeVE": {
-          "type": "slide",
-          "settings": {
-            "title": "Image slide",
-            "description": "Tell your brand's story through images",
-            "media": "",
-            "layout": "",
-            "buttons": []
-          }
         }
       },
       "block_order": [
         "slide_1",
-        "slide_EDQbPg",
-        "slide_yHTeVE"
+        "slide_EDQbPg"
       ],
       "settings": {
         "swiper_settings": ""
@@ -60,11 +49,30 @@
     },
     "featured_categories": {
       "type": "featured-categories",
-      "settings": {
-        "heading": "Kategoriler"
+      "blocks": {
+        "category_F3VTBP": {
+          "type": "category",
+          "settings": {
+            "collection": "pantolon-modelleri",
+            "button_text": "Explore"
+          }
+        },
+        "category_fq9hNt": {
+          "type": "category",
+          "settings": {
+            "collection": "elbise-modelleri",
+            "button_text": "Explore"
+          }
+        }
       },
-      "blocks": {},
-      "block_order": []
+      "block_order": [
+        "category_F3VTBP",
+        "category_fq9hNt"
+      ],
+      "settings": {
+        "heading": "Minik Gezintiler",
+        "description": "<p>Bebeğinizin rahatlığı ve sizin konforunuz düşünülerek tasarlanan bebek arabalarını keşfedin.</p>"
+      }
     }
   },
   "order": [

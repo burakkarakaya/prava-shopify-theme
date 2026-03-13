@@ -1,0 +1,32 @@
+{% comment %}
+  Renders a collection card
+  Accepts:
+  - collection: Collection object
+  - button_text: Button label (default: "Keşfet" / "Explore")
+
+  Usage:
+  {% render 'collection-card', collection: collection, button_text: 'Keşfet' %}
+{% endcomment %}
+
+{%- if collection != blank -%}
+  <div class="collection-card">
+    <a href="{{ collection.url }}">
+      {%- if collection.image != blank -%}
+        <img
+          src="{{ collection.image | image_url: width: 480 }}"
+          alt="{{ collection.title | escape }}"
+          width="480"
+          height="480"
+          loading="lazy"
+        >
+      {%- else -%}
+        {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+      <h3>{{ collection.title }}</h3>
+      {%- assign btn_text = button_text | default: 'Keşfet' -%}
+      {%- if btn_text != blank -%}
+        <span>{{ btn_text }}</span>
+      {%- endif -%}
+    </a>
+  </div>
+{%- endif -%}

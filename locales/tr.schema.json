@@ -2153,6 +2153,9 @@
         "heading": {
           "label": "Başlık",
           "default": "Kategoriler"
+        },
+        "description": {
+          "label": "Açıklama"
         }
       },
       "blocks": {
@@ -2161,6 +2164,10 @@
           "settings": {
             "collection": {
               "label": "Koleksiyon"
+            },
+            "button_text": {
+              "label": "Buton metni",
+              "default": "Keşfet"
             }
           }
         }

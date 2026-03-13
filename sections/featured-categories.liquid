@@ -1,28 +1,23 @@
 <div class="featured-categories">
-  {%- if section.settings.heading != blank -%}
-    <h2>{{ section.settings.heading }}</h2>
-  {%- endif -%}
+  <div>
+    {%- if section.settings.heading != blank -%}
+      <h2>{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.description != blank -%}
+      <div>{{ section.settings.description }}</div>
+    {%- endif -%}
+  </div>
 
-  <div class="featured-categories__grid">
+  <div>
     {%- for block in section.blocks -%}
       {%- assign collection = block.settings.collection -%}
       {%- if collection != blank -%}
-        <a
-          href="{{ collection.url }}"
-          class="featured-categories__item"
-          {{ block.shopify_attributes }}
-        >
-          {%- if collection.image != blank -%}
-            <img
-              src="{{ collection.image | image_url: width: 480 }}"
-              alt="{{ collection.title | escape }}"
-              width="480"
-              height="480"
-              loading="lazy"
-            >
-          {%- endif -%}
-          <span>{{ collection.title }}</span>
-        </a>
+        <div {{ block.shopify_attributes }}>
+          {%- render 'collection-card',
+            collection: collection,
+            button_text: block.settings.button_text
+          -%}
+        </div>
       {%- endif -%}
     {%- endfor -%}
   </div>
@@ -32,7 +27,7 @@
 {
   "name": "t:sections.featured-categories.name",
   "tag": "section",
-  "class": "section featured-categories-section",
+  "class": "featured-categories-section",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
@@ -42,6 +37,11 @@
       "id": "heading",
       "label": "t:sections.featured-categories.settings.heading.label",
       "default": "t:sections.featured-categories.settings.heading.default"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.featured-categories.settings.description.label"
     }
   ],
   "blocks": [
@@ -54,6 +54,12 @@
           "type": "collection",
           "id": "collection",
           "label": "t:sections.featured-categories.blocks.category.settings.collection.label"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "t:sections.featured-categories.blocks.category.settings.button_text.label",
+          "default": "t:sections.featured-categories.blocks.category.settings.button_text.default"
         }
       ]
     }

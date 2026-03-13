@@ -2481,6 +2481,9 @@
         "heading": {
           "label": "Heading",
           "default": "Categories"
+        },
+        "description": {
+          "label": "Description"
         }
       },
       "blocks": {
@@ -2489,6 +2492,10 @@
           "settings": {
             "collection": {
               "label": "Collection"
+            },
+            "button_text": {
+              "label": "Button text",
+              "default": "Explore"
             }
           }
         }
