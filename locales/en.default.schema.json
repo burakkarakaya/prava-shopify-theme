@@ -2504,6 +2504,110 @@
         "name": "Featured Categories"
       }
     },
+    "text-image": {
+      "name": "Text + Image",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "image": {
+          "label": "Image"
+        },
+        "layout": {
+          "label": "Text and image position",
+          "options": {
+            "text_left": "Text left, image right",
+            "image_left": "Image left, text right"
+          }
+        }
+      },
+      "presets": {
+        "name": "Text + Image"
+      }
+    },
+    "feature-product": {
+      "name": "Featured Product",
+      "blocks": {
+        "feature": {
+          "name": "Featured product block",
+          "settings": {
+            "product": {
+              "label": "Product"
+            },
+            "generic_image": {
+              "label": "Generic image"
+            },
+            "layout": {
+              "label": "Layout",
+              "options": {
+                "image_left": "Generic image left, product right",
+                "product_left": "Product left, generic image right"
+              }
+            },
+            "title": {
+              "label": "Title (uses product name if empty)"
+            },
+            "description": {
+              "label": "Description"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Featured Product"
+      }
+    },
+    "product-carousel": {
+      "name": "Product Carousel / List",
+      "settings": {
+        "heading": {
+          "label": "Heading",
+          "default": "Best Sellers"
+        },
+        "source": {
+          "label": "Product source",
+          "options": {
+            "collection": "Collection (best sellers, featured, category, etc.)",
+            "manual": "Manual product selection"
+          }
+        },
+        "collection": {
+          "label": "Collection",
+          "info": "Select a collection. Create a smart collection for best sellers."
+        },
+        "limit": {
+          "label": "Number of products",
+          "info": "Only applies to collection source."
+        },
+        "display_type": {
+          "label": "Display type",
+          "options": {
+            "list": "List (grid)",
+            "carousel": "Carousel (horizontal scroll)"
+          }
+        },
+        "show_view_all": {
+          "label": "View all link",
+          "info": "Only applies to collection source."
+        }
+      },
+      "blocks": {
+        "product": {
+          "name": "Product",
+          "settings": {
+            "product": {
+              "label": "Product"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Product Carousel / List"
+      }
+    },
     "main_swiper": {
       "name": "Main Swiper",
       "settings": {

@@ -87,6 +87,111 @@
         "name": "Öne Çıkan Kategoriler"
       }
     },
+    "text-image": {
+      "name": "Metin + Görsel",
+      "settings": {
+        "heading": {
+          "label": "Başlık"
+        },
+        "text": {
+          "label": "Metin"
+        },
+        "image": {
+          "label": "Görsel"
+        },
+        "layout": {
+          "label": "Yazı ve görsel konumu",
+          "options": {
+            "text_left": "Yazı solda, görsel sağda",
+            "image_left": "Görsel solda, yazı sağda"
+          }
+        }
+      },
+      "presets": {
+        "name": "Metin + Görsel"
+      }
+    },
+    "feature-product": {
+      "name": "Öne Çıkan Ürün",
+      "blocks": {
+        "feature": {
+          "name": "Öne çıkan ürün bloğu",
+          "settings": {
+            "product": {
+              "label": "Ürün"
+            },
+            "generic_image": {
+              "label": "Jenerik görsel"
+            },
+            "layout": {
+              "label": "Düzen",
+              "options": {
+                "image_left": "Jenerik görsel solda, ürün sağda",
+                "product_left": "Ürün solda, jenerik görsel sağda"
+              }
+            },
+            "title": {
+              "label": "Başlık (boş bırakılırsa ürün adı kullanılır)"
+            },
+            "description": {
+              "label": "Açıklama"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Öne Çıkan Ürün"
+      }
+    },
+    "product-carousel": {
+      "name": "Ürün Carousel / Liste",
+      "view_all": "Tümünü Gör",
+      "settings": {
+        "heading": {
+          "label": "Başlık",
+          "default": "En Çok Satanlar"
+        },
+        "source": {
+          "label": "Ürün kaynağı",
+          "options": {
+            "collection": "Koleksiyon (en çok satan, öne çıkan, kategori vb.)",
+            "manual": "Manuel ürün seçimi"
+          }
+        },
+        "collection": {
+          "label": "Koleksiyon",
+          "info": "Koleksiyon seçin. En çok satanlar için akıllı koleksiyon oluşturabilirsiniz."
+        },
+        "limit": {
+          "label": "Ürün sayısı",
+          "info": "Sadece koleksiyon kaynağı için geçerlidir."
+        },
+        "display_type": {
+          "label": "Gösterim tipi",
+          "options": {
+            "list": "Liste (grid)",
+            "carousel": "Carousel (yatay kaydırma)"
+          }
+        },
+        "show_view_all": {
+          "label": "Tümünü Gör bağlantısı",
+          "info": "Sadece koleksiyon kaynağı için geçerlidir."
+        }
+      },
+      "blocks": {
+        "product": {
+          "name": "Ürün",
+          "settings": {
+            "product": {
+              "label": "Ürün"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Ürün Carousel / Liste"
+      }
+    },
     "main_swiper": {
       "name": "Ana Slayt",
       "settings": {

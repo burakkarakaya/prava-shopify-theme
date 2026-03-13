@@ -13,10 +13,7 @@
       {%- assign collection = block.settings.collection -%}
       {%- if collection != blank -%}
         <div {{ block.shopify_attributes }}>
-          {%- render 'collection-card',
-            collection: collection,
-            button_text: block.settings.button_text
-          -%}
+          {%- render 'collection-card', collection: collection, button_text: block.settings.button_text -%}
         </div>
       {%- endif -%}
     {%- endfor -%}
@@ -39,7 +36,7 @@
       "default": "t:sections.featured-categories.settings.heading.default"
     },
     {
-      "type": "richtext",
+      "type": "text",
       "id": "description",
       "label": "t:sections.featured-categories.settings.description.label"
     }
@@ -67,11 +64,7 @@
   "presets": [
     {
       "name": "t:sections.featured-categories.presets.name",
-      "blocks": [
-        { "type": "category" },
-        { "type": "category" },
-        { "type": "category" }
-      ]
+      "blocks": [{ "type": "category" }, { "type": "category" }, { "type": "category" }]
     }
   ]
 }

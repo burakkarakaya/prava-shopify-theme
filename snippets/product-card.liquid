@@ -1,0 +1,40 @@
+{% comment %}
+  Renders a product card
+  Accepts:
+  - product: Product object
+
+  Usage:
+  {% render 'product-card', product: product %}
+{% endcomment %}
+
+{%- if product != blank -%}
+  <div class="product-card-wrapper">
+    <a href="{{ product.url }}" class="card-wrapper">
+      <div class="card card--standard card--media">
+        <div class="card__inner ratio">
+          <div class="card__media">
+            <div class="media">
+              {%- if product.featured_media != blank -%}
+                <img
+                  src="{{ product.featured_media | image_url: width: 480 }}"
+                  alt="{{ product.featured_media.alt | escape }}"
+                  width="480"
+                  height="{{ 480 | divided_by: product.featured_media.aspect_ratio | round }}"
+                  loading="lazy"
+                >
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="card__content">
+            <div class="card-information">
+              <h3 class="card__heading card__information">{{ product.title }}</h3>
+              <span class="price">{{ product.price | money }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+{%- endif -%}

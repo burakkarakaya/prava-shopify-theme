@@ -73,10 +73,55 @@
         "heading": "Minik Gezintiler",
         "description": "<p>Bebeğinizin rahatlığı ve sizin konforunuz düşünülerek tasarlanan bebek arabalarını keşfedin.</p>"
       }
+    },
+    "text_image_3LqGn4": {
+      "type": "text-image",
+      "name": "t:sections.text-image.presets.name",
+      "settings": {
+        "heading": "",
+        "text": "<p>Yenilikçi yaklaşım ve modern şık tasarımlar geliştirilen PRAVA, ailelerin günlük hayatını kolaylaştıran pratik çözümler ve üstün konfor sunar.<br/><br/></p>",
+        "image": "shopify://shop_images/soap-image-5_561c5314-4cf5-4097-9b98-e18cc21bd82a.png",
+        "layout": "text_left"
+      }
+    },
+    "feature_product_Effm7P": {
+      "type": "feature-product",
+      "blocks": {
+        "feature_D7cKR6": {
+          "type": "feature",
+          "settings": {
+            "product": "kablosuz-kulaklik-pro",
+            "generic_image": "shopify://shop_images/soap-image-2_a13ba71b-2f27-4cca-8a0e-cc698dce2578.png",
+            "layout": "image_left",
+            "title": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_D7cKR6"
+      ],
+      "name": "t:sections.feature-product.presets.name",
+      "settings": {}
+    },
+    "product_carousel_7xBphE": {
+      "type": "product-carousel",
+      "name": "t:sections.product-carousel.presets.name",
+      "settings": {
+        "heading": "Best Sellers",
+        "source": "collection",
+        "collection": "gomlek-modelleri",
+        "limit": 7,
+        "display_type": "carousel",
+        "show_view_all": true
+      }
     }
   },
   "order": [
     "main_swiper",
-    "featured_categories"
+    "featured_categories",
+    "text_image_3LqGn4",
+    "feature_product_Effm7P",
+    "product_carousel_7xBphE"
   ]
 }

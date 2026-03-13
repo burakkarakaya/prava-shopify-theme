@@ -1,0 +1,150 @@
+<div class="feature-product-section">
+  {%- for block in section.blocks -%}
+    {%- liquid
+      assign product = block.settings.product
+      assign generic_image = block.settings.generic_image
+      assign layout = block.settings.layout
+      assign title = block.settings.title
+      assign description = block.settings.description
+      if layout == 'image_left'
+        assign image_first = true
+      else
+        assign image_first = false
+      endif
+    -%}
+    <div {{ block.shopify_attributes }} style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; margin-bottom: 2rem;">
+      {%- if image_first -%}
+        {%- if generic_image != blank -%}
+          <div style="flex: 1; min-width: 280px;">
+            <img
+              src="{{ generic_image | image_url: width: 960 }}"
+              alt="{{ generic_image.alt | escape }}"
+              width="960"
+              height="{{ 960 | divided_by: generic_image.aspect_ratio | round }}"
+              loading="lazy"
+            >
+          </div>
+        {%- endif -%}
+        {%- if product != blank -%}
+          <div style="flex: 1; min-width: 280px;">
+            <a href="{{ product.url }}">
+              {%- if product.featured_media != blank -%}
+                <img
+                  src="{{ product.featured_media | image_url: width: 480 }}"
+                  alt="{{ product.featured_media.alt | escape }}"
+                  width="480"
+                  height="{{ 480 | divided_by: product.featured_media.aspect_ratio | round }}"
+                  loading="lazy"
+                >
+              {%- endif -%}
+              {%- if title != blank -%}
+                <h3>{{ title }}</h3>
+              {%- else -%}
+                <h3>{{ product.title }}</h3>
+              {%- endif -%}
+              {%- if description != blank -%}
+                <p>{{ description }}</p>
+              {%- endif -%}
+              <span>{{ product.price | money }}</span>
+            </a>
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        {%- if product != blank -%}
+          <div style="flex: 1; min-width: 280px;">
+            <a href="{{ product.url }}">
+              {%- if product.featured_media != blank -%}
+                <img
+                  src="{{ product.featured_media | image_url: width: 480 }}"
+                  alt="{{ product.featured_media.alt | escape }}"
+                  width="480"
+                  height="{{ 480 | divided_by: product.featured_media.aspect_ratio | round }}"
+                  loading="lazy"
+                >
+              {%- endif -%}
+              {%- if title != blank -%}
+                <h3>{{ title }}</h3>
+              {%- else -%}
+                <h3>{{ product.title }}</h3>
+              {%- endif -%}
+              {%- if description != blank -%}
+                <p>{{ description }}</p>
+              {%- endif -%}
+              <span>{{ product.price | money }}</span>
+            </a>
+          </div>
+        {%- endif -%}
+        {%- if generic_image != blank -%}
+          <div style="flex: 1; min-width: 280px;">
+            <img
+              src="{{ generic_image | image_url: width: 960 }}"
+              alt="{{ generic_image.alt | escape }}"
+              width="960"
+              height="{{ 960 | divided_by: generic_image.aspect_ratio | round }}"
+              loading="lazy"
+            >
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.feature-product.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "t:sections.feature-product.blocks.feature.name",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "t:sections.feature-product.blocks.feature.settings.product.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "generic_image",
+          "label": "t:sections.feature-product.blocks.feature.settings.generic_image.label"
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "t:sections.feature-product.blocks.feature.settings.layout.label",
+          "options": [
+            { "value": "image_left", "label": "t:sections.feature-product.blocks.feature.settings.layout.options.image_left" },
+            { "value": "product_left", "label": "t:sections.feature-product.blocks.feature.settings.layout.options.product_left" }
+          ],
+          "default": "image_left"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.feature-product.blocks.feature.settings.title.label"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "t:sections.feature-product.blocks.feature.settings.description.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.feature-product.presets.name",
+      "blocks": [
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
