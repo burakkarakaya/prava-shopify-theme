@@ -15,8 +15,8 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "title": "sdfdfsdf",
-            "description": "sdfsdfsdfs",
+            "title": "alisasas",
+            "description": "yaparrrrrr",
             "media": "rahatlikla-buyuyen-mutlu-adimlar",
             "layout": "layout-6wfh1i6k",
             "buttons": [
@@ -50,24 +50,32 @@
     "featured_categories": {
       "type": "featured-categories",
       "blocks": {
-        "category_F3VTBP": {
-          "type": "category",
-          "settings": {
-            "collection": "pantolon-modelleri",
-            "button_text": "Explore"
-          }
-        },
         "category_fq9hNt": {
           "type": "category",
           "settings": {
             "collection": "elbise-modelleri",
             "button_text": "Explore"
           }
+        },
+        "category_CyLqqP": {
+          "type": "category",
+          "settings": {
+            "collection": "gomlek-modelleri",
+            "button_text": "Keşfet"
+          }
+        },
+        "category_F3VTBP": {
+          "type": "category",
+          "settings": {
+            "collection": "pantolon-modelleri",
+            "button_text": "Explore"
+          }
         }
       },
       "block_order": [
-        "category_F3VTBP",
-        "category_fq9hNt"
+        "category_fq9hNt",
+        "category_CyLqqP",
+        "category_F3VTBP"
       ],
       "settings": {
         "heading": "Minik Gezintiler",
@@ -81,7 +89,7 @@
         "heading": "",
         "text": "<p>Yenilikçi yaklaşım ve modern şık tasarımlar geliştirilen PRAVA, ailelerin günlük hayatını kolaylaştıran pratik çözümler ve üstün konfor sunar.<br/><br/></p>",
         "image": "shopify://shop_images/soap-image-5_561c5314-4cf5-4097-9b98-e18cc21bd82a.png",
-        "layout": "text_left"
+        "layout": "image_left"
       }
     },
     "feature_product_Effm7P": {
